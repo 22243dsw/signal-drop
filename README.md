@@ -20,4 +20,19 @@ npm start
 PORT=8080 npm start
 ```
 
-临时文件保存在 `data/`，服务启动时会清理过期文件。服务适合在可信网络或反向代理后使用；若部署到公网，建议再加 TLS、访问频率限制和身份认证。
+### Render + Cloudflare R2
+
+在 Render 的 Environment Variables 中添加以下变量，服务会自动切换到 R2 对象存储。不要把密钥提交到 GitHub：
+
+```text
+STORAGE_MODE=s3
+S3_ENDPOINT=https://<你的 Cloudflare Account ID>.r2.cloudflarestorage.com
+S3_REGION=auto
+S3_BUCKET=<你的 R2 Bucket 名称>
+S3_ACCESS_KEY_ID=<R2 Access Key ID>
+S3_SECRET_ACCESS_KEY=<R2 Secret Access Key>
+```
+
+R2 的 Access Key 需要对目标 Bucket 拥有读写权限。配置完成后重新部署，文件、分块上传状态和暗号元数据都会存放在 R2，不依赖 Render 本地磁盘。没有这些变量时，程序自动使用本地 `data/` 目录，方便开发测试。
+
+服务适合在可信网络或反向代理后使用；若部署到公网，建议再加 TLS、访问频率限制和身份认证。

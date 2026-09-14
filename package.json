@@ -5,5 +5,8 @@
   "description": "A streaming file transfer drop with pickup codes",
   "scripts": {
     "start": "node server.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1131.0"
   }
 }

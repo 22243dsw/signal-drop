@@ -8,3 +8,15 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 24
+      - key: STORAGE_MODE
+        value: s3
+      - key: S3_ENDPOINT
+        sync: false
+      - key: S3_REGION
+        value: auto
+      - key: S3_BUCKET
+        sync: false
+      - key: S3_ACCESS_KEY_ID
+        sync: false
+      - key: S3_SECRET_ACCESS_KEY
+        sync: false
