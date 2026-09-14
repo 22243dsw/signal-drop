@@ -1,0 +1,9 @@
+{
+  "name": "signal-drop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A streaming file transfer drop with pickup codes",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

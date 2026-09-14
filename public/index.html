@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signal Drop · 暗号取件</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><div class="brand"><span class="brand-mark">S</span><span>SIGNAL DROP</span></div><span class="status"><i></i> 私密传输中</span></header>
+    <section class="intro"><p class="eyebrow">PRIVATE FILE RELAY / 01</p><h1>把文件交给暗号，<br><em>让它自己抵达。</em></h1><p class="lede">不注册，不绕路。上传后生成一组取件暗号，发送给需要它的人即可。</p></section>
+    <section class="workspace">
+      <div class="panel upload-panel">
+        <div class="panel-heading"><span class="step">01</span><div><h2>寄出文件</h2><p>文件会以流式方式写入，不占用浏览器内存。</p></div></div>
+        <label class="dropzone" id="dropzone"><input type="file" id="fileInput"><span class="upload-icon">↑</span><strong id="dropTitle">拖入文件，或点击选择</strong><span id="dropHint">支持任意格式 · 大文件友好</span></label>
+        <div class="file-preview hidden" id="filePreview"><span class="file-badge">FILE</span><div><strong id="fileName"></strong><span id="fileSize"></span></div><button id="clearFile" type="button" aria-label="移除文件">×</button></div>
+        <button class="primary" id="uploadButton" disabled><span>生成取件暗号</span><span>→</span></button>
+        <div class="progress hidden" id="uploadProgress"><div class="progress-label"><span>正在加密传输</span><strong id="progressText">0%</strong></div><div class="track"><i id="progressBar"></i></div></div>
+      </div>
+      <div class="panel pickup-panel">
+        <div class="panel-heading"><span class="step">02</span><div><h2>凭暗号取件</h2><p>暗号有效 24 小时，最多可下载 5 次。</p></div></div>
+        <form id="downloadForm" class="code-form"><label for="codeInput">输入 10 位取件暗号</label><div class="code-row"><input id="codeInput" maxlength="10" autocomplete="off" placeholder="例如 A4F8 2C91 0D" spellcheck="false"><button class="primary compact" type="submit" aria-label="开始下载">↓</button></div></form>
+        <div class="result hidden" id="result"><span class="result-mark">✓</span><div><span>文件已准备好</span><strong id="resultName"></strong></div><button id="downloadButton" class="download-link" type="button">下载 →</button></div>
+        <div class="tip"><span>⌁</span><p>请只把暗号发给文件接收者。服务器不会读取文件内容，仅保存传输所需的临时副本。</p></div>
+      </div>
+    </section>
+    <footer><span>大文件也能稳稳抵达</span><span>SHA-256 校验 · 自动清理</span></footer>
+  </main>
+  <div class="toast" id="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
