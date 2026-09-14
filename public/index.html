@@ -13,10 +13,11 @@
     <section class="workspace">
       <div class="panel upload-panel">
         <div class="panel-heading"><span class="step">01</span><div><h2>寄出文件</h2><p>文件会以流式方式写入，不占用浏览器内存。</p></div></div>
-        <label class="dropzone" id="dropzone"><input type="file" id="fileInput"><span class="upload-icon">↑</span><strong id="dropTitle">拖入文件，或点击选择</strong><span id="dropHint">支持任意格式 · 大文件友好</span></label>
-        <div class="file-preview hidden" id="filePreview"><span class="file-badge">FILE</span><div><strong id="fileName"></strong><span id="fileSize"></span></div><button id="clearFile" type="button" aria-label="移除文件">×</button></div>
-        <button class="primary" id="uploadButton" disabled><span>生成取件暗号</span><span>→</span></button>
+        <label class="dropzone" id="dropzone"><input type="file" id="fileInput" multiple><span class="upload-icon">↑</span><strong id="dropTitle">拖入多个文件，或点击选择</strong><span id="dropHint">原始二进制传输 · 支持 ZIP、WebM、代码与超大文件</span></label>
+        <div class="file-list hidden" id="fileList"></div>
+        <button class="primary" id="uploadButton" disabled><span>开始批量上传</span><span>→</span></button>
         <div class="progress hidden" id="uploadProgress"><div class="progress-label"><span>正在加密传输</span><strong id="progressText">0%</strong></div><div class="track"><i id="progressBar"></i></div></div>
+        <div class="upload-results hidden" id="uploadResults"></div>
       </div>
       <div class="panel pickup-panel">
         <div class="panel-heading"><span class="step">02</span><div><h2>凭暗号取件</h2><p>暗号有效 24 小时，最多可下载 5 次。</p></div></div>
